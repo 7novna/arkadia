@@ -1,469 +1,289 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Сауна "У Аркадия" – отдых для души и тела</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    :root {
-      --bg-main: #f4e3c3;
-      --bg-card: #fdf6e8;
-      --accent: #b37535;
-      --accent-dark: #8b5423;
-      --text-main: #3a2a1a;
-      --text-light: #fff8ec;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сауна Аркадия — Нижний Новгород</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+--cream: #f4efe3;
+--parchment: #e8e0cc;
+--olive-light: #c8c4a0;
+--olive-mid: #9a9670;
+--olive: #6e6b45;
+--olive-dark: #4a4830;
+--olive-deep: #333220;
+--gold: #b8975a;
+--text: #2e2c1e;
+--text-muted: #6b6650;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--cream); color: var(--text); font-family: 'Lora', serif; }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+header {
+background: var(--olive-light);
+padding: 1.5rem 1rem;
+text-align: center;
+}
+.hero-inner { max-width: 1100px; margin: 0 auto; }
+.hero-logo-row {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.8rem;
+}
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.5;
-    }
+.logo-img {
+width: 132px;
+height: 132px;
+object-fit: contain;
+mix-blend-mode: multiply;
+flex-shrink: 0;
+}
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+.hero-title-wrap {
+text-align: center;
+}
 
-    header {
-      background: linear-gradient(135deg, #8b5a2b 0%, #c79a5b 50%, #f4e3c3 100%);
-      color: var(--text-light);
-      padding: 40px 20px 60px;
-    }
+/* САУНА — цвет темная олива */
+.hero-eyebrow {
+font-size: 14px;
+letter-spacing: 0.15em;
+color: var(--olive-dark);
+text-transform: uppercase;
+margin-bottom: 0;
+line-height: 1;
+}
 
-    .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 30px;
-    }
+h1 {
+font-family: 'Cormorant Garamond', serif;
+font-size: 40px;
+font-weight: 500;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+color: var(--olive-deep);
+line-height: 0.85;
+}
 
-    .hero-text {
-      flex: 1 1 260px;
-      min-width: 260px;
-    }
+.promo { 
+background: var(--olive); 
+color: var(--cream); 
+text-align: center; 
+padding: 1.2rem 1rem; 
+font-size: 28px; 
+letter-spacing: 0.02em; 
+}
 
-    .hero-title {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
+/* Заголовки секций увеличены в 2 раза */
+.section-title-wrap { text-align: center; padding: 2rem 1rem 1.5rem; }
+.section-eyebrow { font-size: 20px; letter-spacing: 0.25em; color: var(--olive-mid); text-transform: uppercase; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: 56px; color: var(--olive-deep); }
 
-    .hero-subtitle {
-      font-size: 1.3rem;
-      margin-bottom: 25px;
-      opacity: 0.95;
-    }
+.rooms { max-width: 1100px; margin: 0 auto; padding: 0 1rem 3rem; }
+.room { margin-bottom: 2rem; }
 
-    .hero-note {
-      font-size: 0.95rem;
-      margin-top: 10px;
-      opacity: 0.9;
-    }
+.room-gallery {
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 1fr 1fr;
+gap: 6px;
+aspect-ratio: 2 / 1;
+margin-bottom: 1.2rem;
+}
+.room-gallery .placeholder {
+background: #dcdcdc;
+border-radius: 4px;
+}
 
-    .hero-image {
-      flex: 1 1 260px;
-      min-width: 260px;
-      border-radius: 18px;
-      background: rgba(0, 0, 0, 0.18);
-      padding: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.room-info { 
+padding: 0; 
+max-width: 380px; 
+}
 
-    .hero-image-inner {
-      width: 100%;
-      height: 220px;
-      border-radius: 14px;
-      background: url("https://images.pexels.com/photos/3831846/pexels-photo-3831846.jpeg?auto=compress&cs=tinysrgb&w=1200") center/cover no-repeat;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
-    }
+/* Номер — цвет темная олива */
+.room-num {
+font-family: 'Cormorant Garamond', serif;
+font-size: 20px;
+letter-spacing: 0.08em;
+color: var(--olive-dark);
+text-transform: uppercase;
+font-weight: 400;
+margin-bottom: 0.2rem;
+}
+.room-num .num {
+font-size: 48px;
+color: var(--olive-dark);
+line-height: 0.8;
+}
 
-    .btn-main {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 26px;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
-      color: var(--text-light);
-      font-size: 1.05rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-      white-space: nowrap;
-    }
+.room-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--olive-deep); margin: 0.3rem 0; }
+.room-name em { font-style: italic; color: var(--olive); }
+.room-cap { font-size: 12px; color: var(--olive-mid); font-style: italic; margin-bottom: 0.8rem; }
+.room-divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 0.8rem; }
 
-    .btn-main:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 9px 20px rgba(0, 0, 0, 0.4);
-    }
+.room-features { list-style: none; margin-bottom: 0.8rem; }
+.room-features li { font-size: 16px; color: var(--text-muted); padding: 0.2rem 0; border-bottom: 1px solid var(--parchment); }
 
-    .btn-main:active {
-      transform: translateY(1px);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
+.price-table { background: var(--parchment); border-radius: 6px; padding: 0.5rem 0.6rem; margin-bottom: 0.8rem; }
+.price-row { display: flex; justify-content: space-between; font-size: 16px; padding: 0.2rem 0; }
+.price-row .amount { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--olive-deep); font-weight: 500; }
 
-    .btn-main span {
-      margin-left: 8px;
-      font-size: 1.1rem;
-    }
+.btn-book { display: block; background: var(--olive); color: var(--cream); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 0.75rem 2rem; border-radius: 3px; text-align: center; }
 
-    main {
-      flex: 1 0 auto;
-      padding: 40px 20px 30px;
-    }
+footer {
+background: var(--olive);
+color: var(--cream);
+text-align: center;
+padding: 2.5rem 1.5rem;
+}
 
-    .section {
-      max-width: 1100px;
-      margin: 0 auto 40px;
-    }
+/* Футер — название и телефоны белые */
+footer .f-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #ffffff; font-style: italic; margin-bottom: 0.5rem; }
+footer p { font-size: 15px; line-height: 1.2; }
+footer a { color: var(--gold); text-decoration: none; }
+.footer-desc { font-style: italic; max-width: 600px; margin: 0 auto 1rem; line-height: 1.2; }
+.footer-phones { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; margin-top: 1rem; }
+.footer-phone { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #ffffff; }
+.footer-clock { font-size: 22px !important; margin-top: 1.2rem; color: rgba(244,239,227,0.8); }
 
-    .section-title {
-      font-size: 1.6rem;
-      margin-bottom: 24px;
-      text-align: center;
-    }
+@media (min-width: 600px) {
+.logo-img { width: 180px; height: 180px; }
+.hero-logo-row { gap: 1.2rem; }
+.hero-eyebrow { font-size: 20px; }
+h1 { font-size: 65px; }
+.section-eyebrow { font-size: 24px; }
+.section-title { font-size: 72px; }
+.room-num .num { font-size: 60px; }
+.room-name { font-size: 30px; }
+}
 
-    /* Карточки номеров */
-    .rooms-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    @media (max-width: 900px) {
-      .rooms-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      header {
-        padding-bottom: 40px;
-      }
-      .rooms-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero {
-        text-align: center;
-      }
-      .hero-image {
-        order: -1;
-      }
-      .hero-image-inner {
-        height: 200px;
-      }
-    }
-
-    .room-card {
-      background: var(--bg-card);
-      border-radius: 16px;
-      padding: 20px 18px 18px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-      border: 1px solid rgba(139, 84, 35, 0.18);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .room-name {
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-
-    .room-desc {
-      font-size: 0.95rem;
-      opacity: 0.9;
-      margin-bottom: 6px;
-    }
-
-    .room-price {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--accent-dark);
-      margin-bottom: 10px;
-    }
-
-    .room-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .room-label {
-      font-size: 0.85rem;
-      opacity: 0.85;
-    }
-
-    .btn-book {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
-      color: var(--text-light);
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.25);
-      white-space: nowrap;
-    }
-
-    .btn-book:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 7px 18px rgba(0, 0, 0, 0.3);
-    }
-
-    .btn-book:active {
-      transform: translateY(1px);
-      box-shadow: 0 3px 9px rgba(0, 0, 0, 0.25);
-    }
-
-    /* Контакты */
-    .contacts {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    @media (max-width: 900px) {
-      .contacts {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .contacts-block {
-      background: var(--bg-card);
-      border-radius: 16px;
-      padding: 20px 18px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-      border: 1px solid rgba(139, 84, 35, 0.18);
-    }
-
-    .contacts-item {
-      margin-bottom: 12px;
-      font-size: 0.98rem;
-    }
-
-    .contacts-item strong {
-      display: inline-block;
-      width: 80px;
-    }
-
-    .contacts-link {
-      color: var(--accent-dark);
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(179, 117, 53, 0.5);
-    }
-
-    .contacts-link:hover {
-      border-bottom-style: solid;
-    }
-
-    .contacts-note {
-      font-size: 0.9rem;
-      opacity: 0.8;
-      margin-top: 10px;
-    }
-
-    .map-placeholder {
-      border-radius: 16px;
-      background: url("https://images.pexels.com/photos/7579098/pexels-photo-7579098.jpeg?auto=compress&cs=tinysrgb&w=1200") center/cover no-repeat;
-      min-height: 180px;
-      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .map-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 55%);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding: 14px 16px;
-      color: #fff;
-      font-size: 0.9rem;
-    }
-
-    .map-overlay-title {
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .map-buttons {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .map-btn {
-      background: rgba(0, 0, 0, 0.55);
-      color: #fff;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.8rem;
-      text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      white-space: nowrap;
-    }
-
-    .map-btn:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    footer {
-      flex-shrink: 0;
-      padding: 14px 20px 18px;
-      font-size: 0.85rem;
-      text-align: center;
-      color: rgba(58, 42, 26, 0.8);
-    }
-  </style>
+@media (min-width: 900px) {
+header { padding: 2rem 2rem; }
+.logo-img { width: 300px; height: 300px; }
+.hero-logo-row { gap: 2rem; }
+.hero-eyebrow { font-size: 32px; }
+h1 { font-size: 120px; }
+.section-title { font-size: 90px; }
+.room { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+.room.reverse { direction: rtl; }
+.room.reverse > * { direction: ltr; }
+.btn-book { display: inline-block; }
+.footer-phones { flex-direction: row; gap: 2rem; justify-content: center; }
+}
+</style>
 </head>
 <body>
-  <div class="page">
-    <!-- Главный экран -->
-    <header>
-      <div class="hero">
-        <div class="hero-text">
-          <h1 class="hero-title">Добро пожаловать в сауну «Аркадия»</h1>
-          <p class="hero-subtitle">Отдых для души и тела в уютной бане из тёплого дерева.</p>
-          <a href="tel:+7XXXXXXXXXX" class="btn-main">
-            Позвонить
-            <span>➤</span>
-          </a>
-          <p class="hero-note">Бронируйте удобное время по телефону, расскажем о свободных номерах и действующих акциях.</p>
-        </div>
-        <div class="hero-image" aria-hidden="true">
-          <div class="hero-image-inner"></div>
-        </div>
-      </div>
-    </header>
 
-    <main>
-      <!-- Наши номера -->
-      <section class="section" id="rooms">
-        <h2 class="section-title">Наши номера</h2>
+<header>
+<div class="hero-inner">
+<div class="hero-logo-row">
+<img class="logo-img" src="https://z-cdn-media.chatglm.cn/files/3c367e38-49ff-4d95-a8e1-ee3863735da9.png?auth_key=1875078906-713137dc05214a66be68d4ecc86372c4-0-e5f750bdee3255aca50f7450eb12646a" alt="Аркадия логотип">
+<div class="hero-title-wrap">
+<div class="hero-eyebrow">Сауна</div>
+<h1>Аркадия</h1>
+</div>
+</div>
+</div>
+</header>
 
-        <div class="rooms-grid">
-          <!-- Стандарт -->
-          <article class="room-card">
-            <div>
-              <h3 class="room-name">Стандарт</h3>
-              <p class="room-desc">Классическая парная для 2–4 гостей: уютная комната отдыха, комфортная парилка и душ.</p>
-              <p class="room-price">от 1 500 ₽ / час</p>
-            </div>
-            <div class="room-bottom">
-              <span class="room-label">Идеально для неспешного вечера вдвоём.</span>
-              <a href="tel:+7XXXXXXXXXX" class="btn-book">Забронировать</a>
-            </div>
-          </article>
+<div class="promo">Сауна Аркадия — место истинного отдыха</div>
 
-          <!-- Люкс -->
-          <article class="room-card">
-            <div>
-              <h3 class="room-name">Люкс</h3>
-              <p class="room-desc">Просторная парная, большая гостиная, отдельная купель и улучшенная зона отдыха.</p>
-              <p class="room-price">от 2 500 ₽ / час</p>
-            </div>
-            <div class="room-bottom">
-              <span class="room-label">Для компаний, праздников и особых случаев.</span>
-              <a href="tel:+7XXXXXXXXXX" class="btn-book">Забронировать</a>
-            </div>
-          </article>
+<div class="section-title-wrap">
+<div class="section-eyebrow">Наши номера</div>
+<div class="section-title">Три пространства <em>для отдыха</em></div>
+</div>
 
-          <!-- Семейный -->
-          <article class="room-card">
-            <div>
-              <h3 class="room-name">Семейный</h3>
-              <p class="room-desc">Тихий и тёплый номер для отдыха всей семьи, детская зона и мягкий режим парной.</p>
-              <p class="room-price">от 2 000 ₽ / час</p>
-            </div>
-            <div class="room-bottom">
-              <span class="room-label">Удобно с детьми, спокойная атмосфера.</span>
-              <a href="tel:+7XXXXXXXXXX" class="btn-book">Забронировать</a>
-            </div>
-          </article>
-        </div>
-      </section>
+<div class="rooms">
 
-      <!-- Контакты -->
-      <section class="section" id="contacts">
-        <h2 class="section-title">Контакты</h2>
+<div class="room">
+<div class="room-gallery">
+<div class="placeholder"></div>
+<div class="placeholder"></div>
+<div class="placeholder"></div>
+<div class="placeholder"></div>
+</div>
+<div class="room-info">
+<div class="room-num">Номер · <span class="num">1</span></div>
+<div class="room-name">Финская <em>сауна</em></div>
+<div class="room-cap">До 4 гостей (максимум 6)</div>
+<div class="room-divider"></div>
+<ul class="room-features">
+<li>Финская парная, отделка из липы</li>
+<li>Бассейн с подогревом воды</li>
+<li>Гидромассажный гейзер</li>
+<li>Гостиная с диваном и ТВ</li>
+</ul>
+<div class="price-table">
+<div class="price-row"><span>10:00 – 16:00</span><span class="amount">1 200 ₽/час</span></div>
+<div class="price-row"><span>16:00 – 09:00</span><span class="amount">1 500 ₽/час</span></div>
+</div>
+<a class="btn-book" href="tel:+79535627733">Забронировать</a>
+</div>
+</div>
 
-        <div class="contacts">
-          <div class="contacts-block">
-            <div class="contacts-item">
-              <strong>Телефон:</strong>
-              <a href="tel:+7XXXXXXXXXX" class="contacts-link">+7&nbsp;XXX&nbsp;XXX‑XX‑XX</a>
-            </div>
-            <div class="contacts-item">
-              <strong>Адрес:</strong>
-              г. Н. Новгород, ул. Примерная, д. 1
-            </div>
-            <div class="contacts-item">
-              <strong>2ГИС:</strong>
-              <a href="https://2gis.ru/" target="_blank" rel="noopener" class="contacts-link">
-                Открыть в 2ГИС
-              </a>
-            </div>
-            <div class="contacts-item">
-              <strong>Яндекс:</strong>
-              <a href="https://yandex.ru/maps" target="_blank" rel="noopener" class="contacts-link">
-                Открыть в Яндекс.Картах
-              </a>
-            </div>
-            <p class="contacts-note">
-              Нажмите на название сервиса, чтобы построить маршрут до сауны.
-            </p>
-          </div>
+<div class="room reverse">
+<div class="room-gallery">
+<div class="placeholder"></div>
+<div class="placeholder"></div>
+<div class="placeholder"></div>
+<div class="placeholder"></div>
+</div>
+<div class="room-info">
+<div class="room-num">Номер · <span class="num">2</span></div>
+<div class="room-name">Турецкий <em>хамам</em></div>
+<div class="room-cap">До 6 гостей (максимум 8)</div>
+<div class="room-divider"></div>
+<ul class="room-features">
+<li>Турецкая баня — хамам</li>
+<li>Бассейн с фильтрацией</li>
+<li>Просторная гостиная с ТВ</li>
+</ul>
+<div class="price-table">
+<div class="price-row"><span>10:00 – 16:00</span><span class="amount">1 500 ₽/час</span></div>
+<div class="price-row"><span>16:00 – 09:00</span><span class="amount">1 800 ₽/час</span></div>
+</div>
+<a class="btn-book" href="tel:+79535627733">Забронировать</a>
+</div>
+</div>
 
-          <div class="map-placeholder">
-            <div class="map-overlay">
-              <div>
-                <div class="map-overlay-title">Как нас найти</div>
-                <div>Сауна «Аркадия», ул. Заярская, 18</div>
-              </div>
-              <div class="map-buttons">
-                <a href="https://2gis.ru/" target="_blank" rel="noopener" class="map-btn">2ГИС</a>
-                <a href="https://yandex.ru/maps" target="_blank" rel="noopener" class="map-btn">Яндекс.Карты</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+<div class="room">
+<div class="room-gallery">
+<div class="placeholder"></div>
+<div class="placeholder"></div>
+<div class="placeholder"></div>
+<div class="placeholder"></div>
+</div>
+<div class="room-info">
+<div class="room-num">Номер · <span class="num">3</span></div>
+<div class="room-name">Финская <em>сауна</em></div>
+<div class="room-cap">До 6 гостей (максимум 8)</div>
+<div class="room-divider"></div>
+<ul class="room-features">
+<li>Финская парная, отделка из липы</li>
+<li>Бассейн с подсветкой</li>
+<li>Светомузыка в гостиной</li>
+</ul>
+<div class="price-table">
+<div class="price-row"><span>10:00 – 16:00</span><span class="amount">1 500 ₽/час</span></div>
+<div class="price-row"><span>16:00 – 09:00</span><span class="amount">1 800 ₽/час</span></div>
+</div>
+<a class="btn-book" href="tel:+79535627733">Забронировать</a>
+</div>
+</div>
 
-    <footer>
-      © 2026 Сауна «Аркадия». Все права защищены.
-    </footer>
-  </div>
+</div>
+
+<footer>
+<div class="f-name">Аркадия</div>
+<p class="footer-desc">Три уединённых номера — финская сауна, турецкий хамам, тёплые бассейны. Круглосуточно.</p>
+<p>Нижний Новгород, ул. Заярская, 18 (около ТЦ «БУМ», Советский район)</p>
+<div class="footer-phones">
+<a class="footer-phone" href="tel:+79535627733">+7-953-562-77-33</a>
+<a class="footer-phone" href="tel:+78312304370">+7(831) 230-43-70</a>
+</div>
+<p class="footer-clock">Работаем круглосуточно</p>
+</footer>
+
 </body>
-
 </html>
