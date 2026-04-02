@@ -19,122 +19,164 @@
 --text-muted: #6b6650;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--cream); color: var(--text); font-family: 'Lora', serif; }
 
-header {
-background: var(--olive-light);
-padding: 0.75rem 0.5rem;
-text-align: center;
+/* === ИСПРАВЛЕНИЕ ПРОКРУТКИ === */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
-.hero-inner { max-width: 1100px; margin: 0 auto; }
+body { 
+  background: var(--cream); 
+  color: var(--text); 
+  font-family: 'Lora', serif;
+  width: 100%;
+  max-width: 100%;
+}
+
+header {
+  background: var(--olive-light);
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-inner { 
+  max-width: 1100px; 
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 0.5rem; /* защита от прилипания к краям */
+}
+
 .hero-logo-row {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap; /* позволяет перенос на узких экранах */
 }
 
 .logo-img {
-width: 210px;
-height: 210px;
-object-fit: contain;
-mix-blend-mode: multiply;
-flex-shrink: 0;
+  width: 150px;  /* УМЕНЬШЕНО с 210px для мобильных */
+  height: 150px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  flex-shrink: 0;
+  max-width: 100%; /* не шире экрана */
 }
 
 .hero-title-wrap {
-text-align: center;
+  text-align: center;
 }
 
 .hero-eyebrow {
-font-size: 14px;
-letter-spacing: 0.15em;
-color: var(--olive-dark);
-text-transform: uppercase;
-margin-bottom: 0;
-line-height: 1;
-transform: translateY(-15px);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: var(--olive-dark);
+  text-transform: uppercase;
+  margin-bottom: 0;
+  line-height: 1;
+  transform: translateY(-15px);
 }
 
 h1 {
-font-family: 'Cormorant Garamond', serif;
-font-size: 40px;
-font-weight: 500;
-text-transform: uppercase;
-letter-spacing: 0.2em;
-color: var(--olive-deep);
-line-height: 0.85;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--olive-deep);
+  line-height: 0.85;
+  word-break: break-word; /* перенос длинных слов */
 }
 
 .promo {
-background: var(--olive);
-color: var(--cream);
-text-align: center;
-padding: 1.2rem 1rem;
-font-size: 28px;
-letter-spacing: 0.02em;
+  background: var(--olive);
+  color: var(--cream);
+  text-align: center;
+  padding: 1.2rem 1rem;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+  width: 100%;
+  max-width: 100%;
 }
 
-.section-title-wrap { text-align: center; padding: 2rem 1rem 1.5rem; }
+.section-title-wrap { 
+  text-align: center; 
+  padding: 2rem 1rem 1.5rem;
+  width: 100%;
+  max-width: 100%;
+}
 .section-eyebrow { font-size: 20px; letter-spacing: 0.25em; color: var(--olive-mid); text-transform: uppercase; }
 .section-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--olive-deep); }
 
-.rooms { max-width: 1100px; margin: 0 auto; padding: 0 1rem 3rem; }
+.rooms { 
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 0 1rem 3rem;
+  width: 100%;
+}
 
 .room {
-margin-bottom: 2rem;
-display: flex;
-flex-direction: column;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
 }
 
 .room-gallery {
-display: grid;
-grid-template-columns: 1fr 1fr;
-grid-template-rows: 1fr 1fr;
-gap: 6px;
-height: 260px;
-margin-bottom: 1.2rem;
-order: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+  height: 260px;
+  margin-bottom: 1.2rem;
+  order: 2;
+  width: 100%;
 }
 .room-gallery .placeholder {
-background: #dcdcdc;
-border-radius: 4px;
+  background: #dcdcdc;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
 }
 
 .room-info {
-padding: 0;
-max-width: 380px;
-width: 100%;
-order: 1;
+  padding: 0;
+  width: 100%;  /* БЫЛО max-width: 380px — это вызывало проблему! */
+  max-width: 100%;
+  order: 1;
 }
 
 .room-num {
-font-family: 'Cormorant Garamond', serif;
-font-size: 20px;
-letter-spacing: 0.08em;
-color: var(--olive-dark);
-text-transform: uppercase;
-font-weight: 400;
-margin-bottom: 0.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  color: var(--olive-dark);
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
 }
 .room-num .num {
-font-size: 48px;
-color: var(--olive-dark);
-line-height: 0.8;
+  font-size: 48px;
+  color: var(--olive-dark);
+  line-height: 0.8;
 }
 
 .room-name {
-font-family: 'Lora', serif;
-font-size: 26px;
-color: var(--olive-deep);
-margin: 0.3rem 0;
-font-weight: 700;
+  font-family: 'Lora', serif;
+  font-size: 26px;
+  color: var(--olive-deep);
+  margin: 0.3rem 0;
+  font-weight: 700;
 }
 .room-name em {
-font-style: normal;
-color: var(--olive-deep);
-font-weight: 700;
+  font-style: normal;
+  color: var(--olive-deep);
+  font-weight: 700;
 }
 
 .room-cap { font-size: 12px; color: var(--olive-mid); font-style: italic; margin-bottom: 0.8rem; }
@@ -147,13 +189,28 @@ font-weight: 700;
 .price-row { display: flex; justify-content: space-between; font-size: 16px; padding: 0.2rem 0; }
 .price-row .amount { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--olive-deep); font-weight: 500; }
 
-.btn-book { display: block; background: var(--olive); color: var(--cream); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 0.75rem 2rem; border-radius: 3px; text-align: center; }
+.btn-book { 
+  display: block; 
+  background: var(--olive); 
+  color: var(--cream); 
+  font-size: 12px; 
+  letter-spacing: 0.15em; 
+  text-transform: uppercase; 
+  text-decoration: none; 
+  padding: 0.75rem 2rem; 
+  border-radius: 3px; 
+  text-align: center;
+  width: fit-content;
+  max-width: 100%;
+}
 
 footer {
-background: var(--olive);
-color: var(--cream);
-text-align: center;
-padding: 2.5rem 1.5rem;
+  background: var(--olive);
+  color: var(--cream);
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  width: 100%;
+  max-width: 100%;
 }
 footer p { font-size: 15px; line-height: 1.2; }
 footer a { color: #ffffff; text-decoration: none; }
@@ -162,42 +219,42 @@ footer a { color: #ffffff; text-decoration: none; }
 .footer-clock { font-size: 22px !important; margin-top: 1.2rem; color: rgba(244,239,227,0.8); }
 
 @media (min-width: 600px) {
-header { padding: 1rem 1rem; }
-.logo-img { width: 180px; height: 180px; }
-.hero-logo-row { gap: 1.2rem; }
-.hero-eyebrow { font-size: 20px; }
-h1 { font-size: 65px; }
-.section-eyebrow { font-size: 24px; }
-.section-title { font-size: 36px; }
-.room-num .num { font-size: 60px; }
-.room-name { font-size: 30px; }
-.room-gallery { height: 320px; }
+  header { padding: 1rem 1rem; }
+  .logo-img { width: 180px; height: 180px; }
+  .hero-logo-row { gap: 1.2rem; }
+  .hero-eyebrow { font-size: 20px; }
+  h1 { font-size: 65px; }
+  .section-eyebrow { font-size: 24px; }
+  .section-title { font-size: 36px; }
+  .room-num .num { font-size: 60px; }
+  .room-name { font-size: 30px; }
+  .room-gallery { height: 320px; }
 }
 
 @media (min-width: 900px) {
-header { padding: 1rem 1rem; }
-.logo-img { width: 300px; height: 300px; }
-.hero-logo-row { gap: 2rem; }
-.hero-eyebrow { font-size: 32px; transform: translateY(-20px); }
-h1 { font-size: 120px; }
-.section-title { font-size: 45px; }
-.room {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 2.5rem;
-margin-bottom: 2.5rem;
-}
-.room-gallery {
-order: unset;
-margin-bottom: 0;
-height: 380px;
-}
-.room-info {
-order: unset;
-max-width: 100%;
-}
-.btn-book { display: inline-block; }
-.footer-phones { flex-direction: row; gap: 2rem; justify-content: center; }
+  header { padding: 1rem 1rem; }
+  .logo-img { width: 300px; height: 300px; }
+  .hero-logo-row { gap: 2rem; }
+  .hero-eyebrow { font-size: 32px; transform: translateY(-20px); }
+  h1 { font-size: 120px; }
+  .section-title { font-size: 45px; }
+  .room {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .room-gallery {
+    order: unset;
+    margin-bottom: 0;
+    height: 380px;
+  }
+  .room-info {
+    order: unset;
+    max-width: 100%;
+  }
+  .btn-book { display: inline-block; }
+  .footer-phones { flex-direction: row; gap: 2rem; justify-content: center; }
 }
 </style>
 </head>
