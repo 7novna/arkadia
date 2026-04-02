@@ -127,23 +127,92 @@ h1 {
   max-width: 100%;
 }
 
+/* === СЛАЙДЕР === */
 .room-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 6px;
+  position: relative;
   height: 260px;
   margin-bottom: 1.2rem;
   order: 2;
   width: 100%;
-}
-.room-gallery .placeholder {
-  background: #dcdcdc;
+  overflow: hidden;
   border-radius: 4px;
-  width: 100%;
-  height: 100%;
 }
 
+.slider-container {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  background: #dcdcdc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Кнопки навигации */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(110, 107, 69, 0.7);
+  color: var(--cream);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.slider-btn:hover {
+  background: var(--olive);
+}
+
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+
+/* Точки-индикаторы */
+.slider-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slider-dot.active {
+  background: var(--gold);
+}
+
+/* === ИНФОРМАЦИЯ О НОМЕРЕ === */
 .room-info {
   padding: 0;
   width: 100%;
@@ -183,11 +252,12 @@ h1 {
 .room-divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 0.8rem; }
 
 .room-features { list-style: none; margin-bottom: 0.8rem; }
-.room-features li { font-size: 16px; color: var(--text-muted); padding: 0.2rem 0; border-bottom: 1px solid var(--parchment); }
+.room-features li { font-size: 14px; color: var(--text-muted); padding: 0.25rem 0; border-bottom: 1px solid var(--parchment); }
 
-.price-table { background: var(--parchment); border-radius: 6px; padding: 0.5rem 0.6rem; margin-bottom: 0.8rem; }
-.price-row { display: flex; justify-content: space-between; font-size: 16px; padding: 0.2rem 0; }
-.price-row .amount { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--olive-deep); font-weight: 500; }
+.price-table { background: var(--parchment); border-radius: 6px; padding: 0.6rem 0.8rem; margin-bottom: 0.8rem; }
+.price-row { display: flex; justify-content: space-between; font-size: 14px; padding: 0.25rem 0; }
+.price-row .amount { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--olive-deep); font-weight: 500; }
+.price-note { font-size: 12px; color: var(--olive-mid); font-style: italic; margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--olive-light); }
 
 .btn-book { 
   display: block; 
@@ -281,12 +351,27 @@ footer a { color: #ffffff; text-decoration: none; }
 
 <div class="rooms">
 
+<!-- НОМЕР 1 — 6 ФОТО -->
 <div class="room">
 <div class="room-gallery">
-<div class="placeholder"></div>
-<div class="placeholder"></div>
-<div class="placeholder"></div>
-<div class="placeholder"></div>
+<div class="slider-container" id="slider-1">
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+1" alt="Номер 1 - фото 1"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+2" alt="Номер 1 - фото 2"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+3" alt="Номер 1 - фото 3"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+4" alt="Номер 1 - фото 4"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+5" alt="Номер 1 - фото 5"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+6" alt="Номер 1 - фото 6"></div>
+</div>
+<button class="slider-btn prev" data-slider="1">‹</button>
+<button class="slider-btn next" data-slider="1">›</button>
+<div class="slider-dots" data-slider="1">
+<span class="slider-dot active" data-slide="0"></span>
+<span class="slider-dot" data-slide="1"></span>
+<span class="slider-dot" data-slide="2"></span>
+<span class="slider-dot" data-slide="3"></span>
+<span class="slider-dot" data-slide="4"></span>
+<span class="slider-dot" data-slide="5"></span>
+</div>
 </div>
 <div class="room-info">
 <div class="room-num">Номер · <span class="num">1</span></div>
@@ -294,25 +379,40 @@ footer a { color: #ffffff; text-decoration: none; }
 <div class="room-cap">До 4 гостей (максимум 6)</div>
 <div class="room-divider"></div>
 <ul class="room-features">
-<li>Финская парная, отделка из липы</li>
-<li>Бассейн с подогревом воды</li>
-<li>Гидромассажный гейзер</li>
+<li>Финская сауна, отделка из липы</li>
+<li>Веники разрешаются, есть в продаже</li>
+<li>Бассейн с подогревом воды (уточняйте!)</li>
 <li>Гостиная с диваном и ТВ</li>
+<li>Отдельная комната отдыха</li>
 </ul>
 <div class="price-table">
 <div class="price-row"><span>10:00 – 16:00</span><span class="amount">1 200 ₽/час</span></div>
 <div class="price-row"><span>16:00 – 09:00</span><span class="amount">1 500 ₽/час</span></div>
+<div class="price-note">+200 ₽/час за каждого доп. гостя</div>
 </div>
 <a class="btn-book" href="tel:+79535627733">Забронировать</a>
 </div>
 </div>
 
+<!-- НОМЕР 2 — 5 ФОТО -->
 <div class="room">
 <div class="room-gallery">
-<div class="placeholder"></div>
-<div class="placeholder"></div>
-<div class="placeholder"></div>
-<div class="placeholder"></div>
+<div class="slider-container" id="slider-2">
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+1" alt="Номер 2 - фото 1"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+2" alt="Номер 2 - фото 2"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+3" alt="Номер 2 - фото 3"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+4" alt="Номер 2 - фото 4"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+5" alt="Номер 2 - фото 5"></div>
+</div>
+<button class="slider-btn prev" data-slider="2">‹</button>
+<button class="slider-btn next" data-slider="2">›</button>
+<div class="slider-dots" data-slider="2">
+<span class="slider-dot active" data-slide="0"></span>
+<span class="slider-dot" data-slide="1"></span>
+<span class="slider-dot" data-slide="2"></span>
+<span class="slider-dot" data-slide="3"></span>
+<span class="slider-dot" data-slide="4"></span>
+</div>
 </div>
 <div class="room-info">
 <div class="room-num">Номер · <span class="num">2</span></div>
@@ -321,23 +421,45 @@ footer a { color: #ffffff; text-decoration: none; }
 <div class="room-divider"></div>
 <ul class="room-features">
 <li>Турецкая баня — хамам</li>
-<li>Бассейн с фильтрацией</li>
-<li>Просторная гостиная с ТВ</li>
+<li>Бассейн с фильтрацией и УФ-очисткой</li>
+<li>Подогрев воды и гейзер (уточняйте!)</li>
+<li>Гостиная с большим диваном и ТВ</li>
+<li>Отдельная комната отдыха</li>
 </ul>
 <div class="price-table">
 <div class="price-row"><span>10:00 – 16:00</span><span class="amount">1 500 ₽/час</span></div>
 <div class="price-row"><span>16:00 – 09:00</span><span class="amount">1 800 ₽/час</span></div>
+<div class="price-note">Пн-Вс · +200 ₽/час за доп. гостя</div>
 </div>
 <a class="btn-book" href="tel:+79535627733">Забронировать</a>
 </div>
 </div>
 
+<!-- НОМЕР 3 — 8 ФОТО -->
 <div class="room">
 <div class="room-gallery">
-<div class="placeholder"></div>
-<div class="placeholder"></div>
-<div class="placeholder"></div>
-<div class="placeholder"></div>
+<div class="slider-container" id="slider-3">
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+1" alt="Номер 3 - фото 1"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+2" alt="Номер 3 - фото 2"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+3" alt="Номер 3 - фото 3"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+4" alt="Номер 3 - фото 4"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+5" alt="Номер 3 - фото 5"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+6" alt="Номер 3 - фото 6"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+7" alt="Номер 3 - фото 7"></div>
+<div class="slide"><img src="https://via.placeholder.com/600x400/dcdcdc/6e6b45?text=Фото+8" alt="Номер 3 - фото 8"></div>
+</div>
+<button class="slider-btn prev" data-slider="3">‹</button>
+<button class="slider-btn next" data-slider="3">›</button>
+<div class="slider-dots" data-slider="3">
+<span class="slider-dot active" data-slide="0"></span>
+<span class="slider-dot" data-slide="1"></span>
+<span class="slider-dot" data-slide="2"></span>
+<span class="slider-dot" data-slide="3"></span>
+<span class="slider-dot" data-slide="4"></span>
+<span class="slider-dot" data-slide="5"></span>
+<span class="slider-dot" data-slide="6"></span>
+<span class="slider-dot" data-slide="7"></span>
+</div>
 </div>
 <div class="room-info">
 <div class="room-num">Номер · <span class="num">3</span></div>
@@ -345,13 +467,16 @@ footer a { color: #ffffff; text-decoration: none; }
 <div class="room-cap">До 6 гостей (максимум 8)</div>
 <div class="room-divider"></div>
 <ul class="room-features">
-<li>Финская парная, отделка из липы</li>
-<li>Бассейн с подсветкой</li>
-<li>Светомузыка в гостиной</li>
+<li>Финская сауна, отделка из липы</li>
+<li>Веники свои (в продаже нет)</li>
+<li>Бассейн с подсветкой и фильтрацией</li>
+<li>Подогрев воды и гейзер (уточняйте!)</li>
+<li>Гостиная с диваном и ТВ</li>
+<li>Отдельная комната отдыха</li>
 </ul>
 <div class="price-table">
-<div class="price-row"><span>10:00 – 16:00</span><span class="amount">1 500 ₽/час</span></div>
-<div class="price-row"><span>16:00 – 09:00</span><span class="amount">1 800 ₽/час</span></div>
+<div class="price-row"><span>Круглосуточно</span><span class="amount">уточняйте</span></div>
+<div class="price-note">+200 ₽/час за каждого доп. гостя</div>
 </div>
 <a class="btn-book" href="tel:+79535627733">Забронировать</a>
 </div>
@@ -367,6 +492,56 @@ footer a { color: #ffffff; text-decoration: none; }
 </div>
 <p class="footer-clock">Работаем круглосуточно</p>
 </footer>
+
+<script>
+// Простой слайдер для каждого номера
+document.querySelectorAll('.slider-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const sliderId = this.dataset.slider;
+    const container = document.querySelector(`#slider-${sliderId}`);
+    const dots = document.querySelectorAll(`.slider-dots[data-slider="${sliderId}"] .slider-dot`);
+    const slides = container.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    
+    let currentIndex = parseInt(container.dataset.currentIndex || 0);
+    
+    if (this.classList.contains('next')) {
+      currentIndex = (currentIndex + 1) % totalSlides;
+    } else {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    }
+    
+    container.dataset.currentIndex = currentIndex;
+    container.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  });
+});
+
+// Клик по точкам
+document.querySelectorAll('.slider-dot').forEach(dot => {
+  dot.addEventListener('click', function() {
+    const sliderId = this.parentElement.dataset.slider;
+    const container = document.querySelector(`#slider-${sliderId}`);
+    const dots = this.parentElement.querySelectorAll('.slider-dot');
+    const slideIndex = parseInt(this.dataset.slide);
+    
+    container.dataset.currentIndex = slideIndex;
+    container.style.transform = `translateX(-${slideIndex * 100}%)`;
+    
+    dots.forEach((d, index) => {
+      d.classList.toggle('active', index === slideIndex);
+    });
+  });
+});
+
+// Инициализация
+document.querySelectorAll('.slider-container').forEach(container => {
+  container.dataset.currentIndex = 0;
+});
+</script>
 
 </body>
 </html>
