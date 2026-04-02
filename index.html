@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Сауна Аркадия — Нижний Новгород</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
 --cream: #f4efe3;
---parchment: #e8e0cc; 
+--parchment: #e8e0cc;
 --olive-light: #c8c4a0;
 --olive-mid: #9a9670;
 --olive: #6e6b45;
@@ -76,12 +76,16 @@ letter-spacing: 0.02em;
 
 .section-title-wrap { text-align: center; padding: 2rem 1rem 1.5rem; }
 .section-eyebrow { font-size: 20px; letter-spacing: 0.25em; color: var(--olive-mid); text-transform: uppercase; }
-
-/* Уменьшено на 50% */
 .section-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--olive-deep); }
 
 .rooms { max-width: 1100px; margin: 0 auto; padding: 0 1rem 3rem; }
-.room { margin-bottom: 2rem; }
+
+/* На мобильных делаем колонку (текст сверху, фото снизу) */
+.room { 
+margin-bottom: 2rem; 
+display: flex;
+flex-direction: column;
+}
 
 .room-gallery {
 display: grid;
@@ -90,6 +94,7 @@ grid-template-rows: 1fr 1fr;
 gap: 6px;
 aspect-ratio: 2 / 1;
 margin-bottom: 1.2rem;
+order: 2; /* Фото вниз на мобильных */
 }
 .room-gallery .placeholder {
 background: #dcdcdc;
@@ -99,6 +104,8 @@ border-radius: 4px;
 .room-info { 
 padding: 0; 
 max-width: 380px; 
+width: 100%;
+order: 1; /* Описание вверх на мобильных */
 }
 
 .room-num {
@@ -116,8 +123,19 @@ color: var(--olive-dark);
 line-height: 0.8;
 }
 
-.room-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--olive-deep); margin: 0.3rem 0; }
-.room-name em { font-style: italic; color: var(--olive); }
+.room-name { 
+font-family: 'Lora', serif; 
+font-size: 26px; 
+color: var(--olive-deep); 
+margin: 0.3rem 0; 
+font-weight: 700; 
+}
+.room-name em { 
+font-style: normal; 
+color: var(--olive-deep); 
+font-weight: 700; 
+}
+
 .room-cap { font-size: 12px; color: var(--olive-mid); font-style: italic; margin-bottom: 0.8rem; }
 .room-divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 0.8rem; }
 
@@ -136,10 +154,8 @@ color: var(--cream);
 text-align: center;
 padding: 2.5rem 1.5rem;
 }
-footer .f-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #ffffff; font-style: italic; margin-bottom: 0.5rem; }
 footer p { font-size: 15px; line-height: 1.2; }
-footer a { color: var(--gold); text-decoration: none; }
-.footer-desc { font-style: italic; max-width: 600px; margin: 0 auto 1rem; line-height: 1.2; }
+footer a { color: #ffffff; text-decoration: none; }
 .footer-phones { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; margin-top: 1rem; }
 .footer-phone { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #ffffff; }
 .footer-clock { font-size: 22px !important; margin-top: 1.2rem; color: rgba(244,239,227,0.8); }
@@ -162,7 +178,23 @@ header { padding: 2rem 2rem; }
 .hero-eyebrow { font-size: 32px; }
 h1 { font-size: 120px; }
 .section-title { font-size: 45px; }
-.room { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+/* На десктопе возвращаем сетку и чередование */
+.room { 
+display: grid; 
+grid-template-columns: 1fr 1fr; 
+gap: 2.5rem; 
+margin-bottom: 2.5rem; 
+}
+.room-gallery { 
+order: unset; 
+margin-bottom: 0;
+aspect-ratio: unset;
+grid-template-rows: 220px 150px;
+}
+.room-info { 
+order: unset; 
+max-width: 100%;
+}
 .room.reverse { direction: rtl; }
 .room.reverse > * { direction: ltr; }
 .btn-book { display: inline-block; }
@@ -184,7 +216,7 @@ h1 { font-size: 120px; }
 </div>
 </header>
 
-<div class="promo">Сауна Аркадия — место истинного отдыха</div>
+<div class="promo">Сауна Аркадия — место истинного отдыха, Ваш персональный Рай.</div>
 
 <div class="section-title-wrap">
 <div class="section-eyebrow">Наши номера</div>
@@ -202,7 +234,7 @@ h1 { font-size: 120px; }
 </div>
 <div class="room-info">
 <div class="room-num">Номер · <span class="num">1</span></div>
-<div class="room-name">Финская <em>сауна</em></div>
+<div class="room-name">Финская сауна</div>
 <div class="room-cap">До 4 гостей (максимум 6)</div>
 <div class="room-divider"></div>
 <ul class="room-features">
@@ -219,7 +251,7 @@ h1 { font-size: 120px; }
 </div>
 </div>
 
-<div class="room reverse">
+<div class="room">
 <div class="room-gallery">
 <div class="placeholder"></div>
 <div class="placeholder"></div>
@@ -228,7 +260,7 @@ h1 { font-size: 120px; }
 </div>
 <div class="room-info">
 <div class="room-num">Номер · <span class="num">2</span></div>
-<div class="room-name">Турецкий <em>хамам</em></div>
+<div class="room-name">Турецкий хамам</div>
 <div class="room-cap">До 6 гостей (максимум 8)</div>
 <div class="room-divider"></div>
 <ul class="room-features">
@@ -253,7 +285,7 @@ h1 { font-size: 120px; }
 </div>
 <div class="room-info">
 <div class="room-num">Номер · <span class="num">3</span></div>
-<div class="room-name">Финская <em>сауна</em></div>
+<div class="room-name">Финская сауна</div>
 <div class="room-cap">До 6 гостей (максимум 8)</div>
 <div class="room-divider"></div>
 <ul class="room-features">
@@ -272,8 +304,6 @@ h1 { font-size: 120px; }
 </div>
 
 <footer>
-<div class="f-name">Аркадия</div>
-<p class="footer-desc">Три уединённых номера — финская сауна, турецкий хамам, тёплые бассейны. Круглосуточно.</p>
 <p>Нижний Новгород, ул. Заярская, 18 (около ТЦ «БУМ», Советский район)</p>
 <div class="footer-phones">
 <a class="footer-phone" href="tel:+79535627733">+7-953-562-77-33</a>
