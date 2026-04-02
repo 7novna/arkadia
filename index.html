@@ -21,11 +21,13 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--cream); color: var(--text); font-family: 'Lora', serif; }
 
+/* ОТСТУПЫ УМЕНЬШЕНЫ НА 50% (были 1rem, стали 0.5rem) */
 header {
 background: var(--olive-light);
-padding: 1.5rem 1rem;
+padding: 0.75rem 0.5rem;
 text-align: center;
 }
+
 .hero-inner { max-width: 1100px; margin: 0 auto; }
 .hero-logo-row {
 display: flex;
@@ -35,8 +37,8 @@ gap: 0.8rem;
 }
 
 .logo-img {
-width: 132px;
-height: 132px;
+width: 210px;
+height: 210px;
 object-fit: contain;
 mix-blend-mode: multiply;
 flex-shrink: 0;
@@ -53,6 +55,7 @@ color: var(--olive-dark);
 text-transform: uppercase;
 margin-bottom: 0;
 line-height: 1;
+transform: translateY(-15px);
 }
 
 h1 {
@@ -65,13 +68,13 @@ color: var(--olive-deep);
 line-height: 0.85;
 }
 
-.promo { 
-background: var(--olive); 
-color: var(--cream); 
-text-align: center; 
-padding: 1.2rem 1rem; 
-font-size: 28px; 
-letter-spacing: 0.02em; 
+.promo {
+background: var(--olive);
+color: var(--cream);
+text-align: center;
+padding: 1.2rem 1rem;
+font-size: 28px;
+letter-spacing: 0.02em;
 }
 
 .section-title-wrap { text-align: center; padding: 2rem 1rem 1.5rem; }
@@ -80,32 +83,32 @@ letter-spacing: 0.02em;
 
 .rooms { max-width: 1100px; margin: 0 auto; padding: 0 1rem 3rem; }
 
-/* На мобильных делаем колонку (текст сверху, фото снизу) */
-.room { 
-margin-bottom: 2rem; 
+.room {
+margin-bottom: 2rem;
 display: flex;
 flex-direction: column;
 }
 
+/* БЛОКИ С ФОТО — ОДИНАКОВЫЕ на всех breakpoint'ах */
 .room-gallery {
 display: grid;
 grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 1fr;
 gap: 6px;
-aspect-ratio: 2 / 1;
+height: 260px;
 margin-bottom: 1.2rem;
-order: 2; /* Фото вниз на мобильных */
+order: 2;
 }
 .room-gallery .placeholder {
 background: #dcdcdc;
 border-radius: 4px;
 }
 
-.room-info { 
-padding: 0; 
-max-width: 380px; 
+.room-info {
+padding: 0;
+max-width: 380px;
 width: 100%;
-order: 1; /* Описание вверх на мобильных */
+order: 1;
 }
 
 .room-num {
@@ -123,17 +126,17 @@ color: var(--olive-dark);
 line-height: 0.8;
 }
 
-.room-name { 
-font-family: 'Lora', serif; 
-font-size: 26px; 
-color: var(--olive-deep); 
-margin: 0.3rem 0; 
-font-weight: 700; 
+.room-name {
+font-family: 'Lora', serif;
+font-size: 26px;
+color: var(--olive-deep);
+margin: 0.3rem 0;
+font-weight: 700;
 }
-.room-name em { 
-font-style: normal; 
-color: var(--olive-deep); 
-font-weight: 700; 
+.room-name em {
+font-style: normal;
+color: var(--olive-deep);
+font-weight: 700;
 }
 
 .room-cap { font-size: 12px; color: var(--olive-mid); font-style: italic; margin-bottom: 0.8rem; }
@@ -161,6 +164,8 @@ footer a { color: #ffffff; text-decoration: none; }
 .footer-clock { font-size: 22px !important; margin-top: 1.2rem; color: rgba(244,239,227,0.8); }
 
 @media (min-width: 600px) {
+/* ОТСТУПЫ УМЕНЬШЕНЫ НА 50% (были 2rem, стали 1rem) */
+header { padding: 1rem 1rem; }
 .logo-img { width: 180px; height: 180px; }
 .hero-logo-row { gap: 1.2rem; }
 .hero-eyebrow { font-size: 20px; }
@@ -169,30 +174,32 @@ h1 { font-size: 65px; }
 .section-title { font-size: 36px; }
 .room-num .num { font-size: 60px; }
 .room-name { font-size: 30px; }
+/* ФОТО — одинаковая высота на планшетах */
+.room-gallery { height: 320px; }
 }
 
 @media (min-width: 900px) {
-header { padding: 2rem 2rem; }
+/* ОТСТУПЫ УМЕНЬШЕНЫ НА 50% (были 2rem, стали 1rem) */
+header { padding: 1rem 1rem; }
 .logo-img { width: 300px; height: 300px; }
 .hero-logo-row { gap: 2rem; }
-.hero-eyebrow { font-size: 32px; }
+.hero-eyebrow { font-size: 32px; transform: translateY(-20px); }
 h1 { font-size: 120px; }
 .section-title { font-size: 45px; }
-/* На десктопе возвращаем сетку и чередование */
-.room { 
-display: grid; 
-grid-template-columns: 1fr 1fr; 
-gap: 2.5rem; 
-margin-bottom: 2.5rem; 
+.room {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2.5rem;
+margin-bottom: 2.5rem;
 }
-.room-gallery { 
-order: unset; 
+/* ФОТО — одинаковая фиксированная высота на компьютерах */
+.room-gallery {
+order: unset;
 margin-bottom: 0;
-aspect-ratio: unset;
-grid-template-rows: 220px 150px;
+height: 380px;
 }
-.room-info { 
-order: unset; 
+.room-info {
+order: unset;
 max-width: 100%;
 }
 .room.reverse { direction: rtl; }
